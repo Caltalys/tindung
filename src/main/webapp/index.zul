@@ -1,0 +1,24 @@
+<?style href="css/bootstrap.css" type="text/css" ?>
+<?script type="text/javascript" src="js/bootstrap.min.js"?>
+
+<zk>
+
+	<zscript><![CDATA[
+	((org.zkoss.zk.ui.sys.PageCtrl)page).addAfterHeadTags("<meta name='og:image' content='HTML, CSS, XML'/>");
+    public class FruitProvider {
+        public ListModelArray fruits =
+                new ListModelArray(new String[][] {{"Apple", "10kg", "300K"}, {"Apple", "10kg", "300K"},
+                        {"Apple", "10kg", "300K"}, {"Apple", "10kg", "300K"}, {"Apple", "10kg", "300K"}});
+
+        public ListModelArray getFruits() {
+            return fruits;
+        }
+    }
+]]></zscript>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('FruitProvider')">
+		<div sclass="row">
+			<label value="test"></label>
+		</div>
+	</window>
+</zk>
