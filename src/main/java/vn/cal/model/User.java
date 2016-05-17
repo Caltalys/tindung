@@ -1,4 +1,4 @@
-package vn.cal.core;
+package vn.cal.model;
 
 import java.util.Date;
 import java.util.logging.Logger;
@@ -11,6 +11,8 @@ import javax.persistence.UniqueConstraint;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jasypt.util.password.BasicPasswordEncryptor;
+
+import vn.cal.core.Model;
 
 @Entity
 @Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = {"tenDangNhap"}), indexes = @Index(columnList = "tenDangNhap"))

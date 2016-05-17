@@ -14,6 +14,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
+import vn.cal.model.User;
+
 @MappedSuperclass
 public class Model<T extends Model<T>> extends CoreObject<T> {
     

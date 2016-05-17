@@ -22,7 +22,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 
 import vn.cal.core.QUser;
 import vn.cal.core.Service;
-import vn.cal.core.User;
+import vn.cal.model.User;
 
 @Init(superclass=true)
 public class UserService extends Service<User> {
