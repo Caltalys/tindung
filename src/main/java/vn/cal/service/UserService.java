@@ -20,8 +20,8 @@ import org.zkoss.zk.ui.util.Clients;
 
 import com.querydsl.jpa.impl.JPAQuery;
 
-import vn.cal.core.QUser;
 import vn.cal.core.Service;
+import vn.cal.model.QUser;
 import vn.cal.model.User;
 
 @Init(superclass=true)
