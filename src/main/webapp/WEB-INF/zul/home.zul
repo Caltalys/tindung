@@ -13,8 +13,8 @@
 
 <zk xmlns:n="native" xmlns:x="xhtml">
 	<zscript><![CDATA[
-		vn.cal.core.App app = vn.cal.core.App.instance;
-		System.out.println("env:"+app);
+		//vn.cal.core.App app = vn.cal.core.App.instance;
+		//System.out.println("env:"+app);
 		String resource = execution.getParameter("resource");
 		String action = execution.getParameter("action");
 		String file = execution.getParameter("file");
