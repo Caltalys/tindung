@@ -98,7 +98,8 @@ public class UserService extends Service<User> {
     
     @Command
     public void login(@BindingParam("email")final String email, @BindingParam("password")final String password){
-        User user = new JPAQuery<User>(em()).from(QUser.user)
+        System.out.println(email+" - " +password);
+    	User user = new JPAQuery<User>(em()).from(QUser.user)
                 .where(QUser.user.daXoa.isFalse())
                 .where(QUser.user.trangThai.ne(TT_DA_XOA))
                 .where(QUser.user.email.eq(email))

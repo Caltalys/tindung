@@ -1,8 +1,80 @@
-<?page id="login_page" title="Đăng nhập"?>
-<zk>
-	<window>
-		<label value="dang nhap"></label>
-		<a href="${execution.getContextPath()}">home</a>
-	</window>
+<?style href="/css/bootstrap.min.css" type="text/css" ?>
+<?style href="/fonts/css/font-awesome.min.css" type="text/css" ?>
+<?style href="/css/animate.min.css" type="text/css" ?>
+<?style href="/css/icheck/flat/green.css" type="text/css" ?>
+<?style href="/css/custom-login.css" type="text/css" ?>
 
+<?script type="text/javascript" src="/js/bootstrap.min.js"?>
+
+<?page title="Đăng nhập" contentType="text/html;charset=UTF-8"?>
+<?meta http-equiv="X-UA-Compatible" content="IE=edge"?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<style>
+		body {background: #F7F7F7}
+
+	</style>
+	<div class="" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vn.cal.service.UserService')">
+		<a class="hiddenanchor" id="toregister"></a>
+		<a class="hiddenanchor" id="tologin"></a>
+
+		<n:div id="wrapper">
+			<n:div id="login" class="animate form">
+				<n:section class="login_content">
+					<n:form>
+						<n:h1>Login Form</n:h1>
+						<div>
+							<textbox type="text" id="username" constraint="no empty"
+								class="form-control" placeholder="Username" />
+						</div>
+						<div>
+							<textbox type="password" id="password" constraint="no empty"
+								class="form-control" placeholder="Password" />
+						</div>
+						<div>
+							<a class="btn btn-default submit" label="Log in"
+								onClick="vm.login(username.getValue(), password.getValue());">
+							</a>
+							<a class="reset_pass" href="#">
+								Lost your password?
+							</a>
+						</div>
+						<div class="clearfix"></div>
+						<div class="separator">
+
+							<n:p class="change_link">
+								New to site?
+								<a href="#toregister"
+									class="to_register">
+									Create Account
+								</a>
+							</n:p>
+							<div class="clearfix"></div>
+							<n:br />
+							<div>
+								<n:h1>
+									<n:i class="fa fa-paw"
+										style="font-size: 26px;">
+									</n:i>
+									Gentelella Alela!
+								</n:h1>
+
+								<n:p>
+									©2015 All Rights Reserved.
+									Gentelella Alela! is a Bootstrap 3
+									template. Privacy and Terms
+								</n:p>
+							</div>
+						</div>
+					</n:form>
+				</n:section>
+			</n:div>
+
+			<div id="register" class="animate form">
+
+			</div>
+		</n:div>
+	</div>
 </zk>
