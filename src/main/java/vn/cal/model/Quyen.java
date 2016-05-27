@@ -6,8 +6,7 @@ import java.util.logging.Logger;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.springframework.beans.factory.annotation.Value;
 
-import vn.cal.core.Service;
-
+import vn.cal.core.CoreObject;
 
 public class Quyen extends HashMap<String, Boolean>{
 
@@ -87,12 +86,13 @@ public class Quyen extends HashMap<String, Boolean>{
 		super();
 	}
 
+	@Override
 	public Boolean get(Object key_){
 		if(key_ == null){
 			return false;
 		}
 		
-		if (id != 0 && nguoiTao != null && nguoiTao.equals(new Service<>().getUserService().getUser(false))) {
+		if (id != 0 && nguoiTao != null && nguoiTao.equals(CoreObject.env().getUser())) {
 			return true;
 		}
 		

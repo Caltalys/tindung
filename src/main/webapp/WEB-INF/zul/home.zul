@@ -13,14 +13,14 @@
 
 <zk xmlns:n="native" xmlns:x="xhtml">
 	<zscript><![CDATA[
-		//vn.cal.core.App app = vn.cal.core.App.instance;
-		//System.out.println("env:"+app);
+		vn.cal.core.CoreObject core = vn.cal.core.CoreObject.env();
 		String resource = execution.getParameter("resource");
 		String action = execution.getParameter("action");
 		String file = execution.getParameter("file");
 		System.out.println("-----" + resource +":"+ action + ":" + file);
-		String ctxPath = execution.getContextPath();
-		System.out.println("-----ctxPath" + ctxPath);
+		System.out.println("quyen" + core);
+		coquyen = core.getQuyen().get(resource + "_" + action);
+		
 	]]></zscript>
 	<div zclass="container body">
 		<div sclass="main_container">
@@ -162,9 +162,11 @@
       									<n:a href="javascript:;">Help</n:a>
       								</n:li>
       								<n:li>
-      									<n:a href="login.html">
+      									<x:a apply="org.zkoss.bind.BindComposer"
+											viewModel="@id('vmUser') @init(core.userService)"
+											onClick="@command('logout')">
       										<n:i class="fa fa-sign-out pull-right"></n:i>Log Out
-      									</n:a>
+      									</x:a>
       								</n:li>
       							</n:ul>
       						</n:li>
@@ -219,8 +221,8 @@
       		<!-- page content -->
       		<n:div class="right_col" role="main">
 				
-				<include instant="true" src="${execution.getParameter('file')}"></include>
-				<!-- <label if="${!coquyen}">Bạn không có quyền truy cập chức năng này!</label> -->
+				<include instant="true" src="${execution.getParameter('file')}" if="${coquyen}"></include>
+				<label if="${!coquyen}">Bạn không có quyền truy cập chức năng này!</label>
 					
       			<!-- footer content -->
       			<n:footer>

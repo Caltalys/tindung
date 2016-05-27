@@ -43,7 +43,7 @@ public class UserService extends Service<User> {
                 if(cookies!=null){
                     for (Cookie c : cookies) {
                         if("email".equals(c.getName())){
-                            token = c.getName();
+                            token = c.getValue();
                             break;
                         }
                     }
@@ -92,13 +92,13 @@ public class UserService extends Service<User> {
         if(q.fetchCount()==0){
             final User user = new User("test@liferay.com", "Super Addmin");
             user.updatePassword("1");
+            user.getQuyens().add("*");
             user.save();
         }
     }
     
     @Command
     public void login(@BindingParam("email")final String email, @BindingParam("password")final String password){
-        System.out.println(email+" - " +password);
     	User user = new JPAQuery<User>(em()).from(QUser.user)
                 .where(QUser.user.daXoa.isFalse())
                 .where(QUser.user.trangThai.ne(TT_DA_XOA))
@@ -114,10 +114,24 @@ public class UserService extends Service<User> {
             cookie.setPath("/");
             cookie.setMaxAge(1000000000);
             res.addCookie(cookie);
+            Clients.showNotification("Đăng nhập thành công", "info", null, "top_center", 5000);
             Executions.sendRedirect("/");
         } else {
             Clients.showNotification("Đăng nhập không thành công", "error", null, "top_center", 5000);
         }
+    }
+    
+    @Command
+    public void logout(){
+    	Session zkSession = Sessions.getCurrent();
+    	zkSession.removeAttribute("email");
+		HttpServletResponse response = (HttpServletResponse) Executions
+				.getCurrent().getNativeResponse();
+		Cookie cookie = new javax.servlet.http.Cookie("email", "email");
+		cookie.setPath("/");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		Executions.sendRedirect("/");
     }
     
 }
