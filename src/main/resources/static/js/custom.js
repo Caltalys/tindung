@@ -6,7 +6,7 @@
 
 /** ******  left menu  *********************** **/
 $(function () {
-    $('#sidebar-menu li ul').slideUp();
+	/*$('#sidebar-menu li ul').slideUp();
     $('#sidebar-menu li').removeClass('active');
 
     $('#sidebar-menu li').on('click touchstart', function() {
@@ -45,32 +45,32 @@ $(function () {
                 $('#sidebar-menu li.active-sm').addClass('active').removeClass('active-sm');
             }
         }
-    });
+    });*/
 });
 
 /* Sidebar Menu active class */
-$(function () {
+/*$(function () {
     var url = window.location;
     $('#sidebar-menu a[href="' + url + '"]').parent('li').addClass('current-page');
     $('#sidebar-menu a').filter(function () {
         return this.href == url;
     }).parent('li').addClass('current-page').parent('ul').slideDown().parent().addClass('active');
-});
+});*/
 
 /** ******  /left menu  *********************** **/
 /** ******  right_col height flexible  *********************** **/
-$(".right_col").css("min-height", $(window).height());
+/*$(".right_col").css("min-height", $(window).height());
 $(window).resize(function () {
     $(".right_col").css("min-height", $(window).height());
-});
+});*/
 /** ******  /right_col height flexible  *********************** **/
 
 
 
 /** ******  tooltip  *********************** **/
-$(function () {
+/*$(function () {
     $('[data-toggle="tooltip"]').tooltip()
-})
+})*/
 /** ******  /tooltip  *********************** **/
 /** ******  progressbar  *********************** **/
 if ($(".progress .progress-bar")[0]) {
